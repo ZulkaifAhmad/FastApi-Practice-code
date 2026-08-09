@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Ali Khan",
+    "age": 30,
+    "gender": "Male",
+    "disease": "Flu",
+    "admitted": true
+  },
+  {
+    "id": 2,
+    "name": "Sara Ahmed",
+    "age": 25,
+    "gender": "Female",
+    "disease": "Fever",
+    "admitted": false
+  },
+  {
+    "id": 3,
+    "name": "Usman Tariq",
+    "age": 40,
+    "gender": "Male",
+    "disease": "Diabetes",
+    "admitted": true
+  },
+  {
+    "id": 4,
+    "name": "Ayesha Malik",
+    "age": 35,
+    "gender": "Female",
+    "disease": "Asthma",
+    "admitted": false
+  },
+  {
+    "id": 5,
+    "name": "Bilal Hussain",
+    "age": 28,
+    "gender": "Male",
+    "disease": "Cold",
+    "admitted": false
+  },
+  {
+    "id": 6,
+    "name": "Hina Raza",
+    "age": 32,
+    "gender": "Female",
+    "disease": "Migraine",
+    "admitted": true
+  },
+  {
+    "id": 7,
+    "name": "Zain Ali",
+    "age": 45,
+    "gender": "Male",
+    "disease": "Hypertension",
+    "admitted": true
+  },
+  {
+    "id": 8,
+    "name": "Fatima Noor",
+    "age": 22,
+    "gender": "Female",
+    "disease": "Allergy",
+    "admitted": false
+  },
+  {
+    "id": 9,
+    "name": "Hamza Sheikh",
+    "age": 50,
+    "gender": "Male",
+    "disease": "Heart Disease",
+    "admitted": true
+  },
+  {
+    "id": 10,
+    "name": "Mariam Iqbal",
+    "age": 27,
+    "gender": "Female",
+    "disease": "Anemia",
+    "admitted": false
+  }
+]
