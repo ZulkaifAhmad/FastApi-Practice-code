@@ -1,5 +1,5 @@
-from pydantic import BaseModel, Field, EmailStr , field_validator
-
+from pydantic import BaseModel, Field, EmailStr , field_validator , model_validator , computed_field
+from typing import Dict
 
 class User(BaseModel):
     username: str = Field(
@@ -15,9 +15,7 @@ class User(BaseModel):
         description="Password must be between 6 and 30 characters",
     )
 
-    age: int = Field(
-        gt=18, lt=60, description="Age must be greater than 18 and less than 60"
-    )
+    age: int 
 
     email: EmailStr
 
@@ -26,11 +24,28 @@ class User(BaseModel):
     bio: str | None = Field(
         default=None, max_length=100, description="Optional short bio"
     )
+    contact : Dict[str , str]
+    # Height is provided in centimetres and weight in kilograms.
+    height_cm: float = Field(gt=0)
+    weight_kg: float = Field(gt=0)
+    
+    @model_validator(mode='after')
+    def validate_emergency_contact(cls , model):
+        if model.age >= 60 and 'emergency_contact' not in model.contact:
+            raise ValueError('user older then 60age must have emergency number')
+        return model
     
     @field_validator('username')
     @classmethod
     def capitalize(cls , value):
         return value.upper()
+    
+    @computed_field
+    @property
+    def bmi(self) -> float:
+        height_in_meters = self.height_cm / 100
+        return round(self.weight_kg / (height_in_meters ** 2), 2)
+
 
 
 def Signup(payload: User):
@@ -40,14 +55,18 @@ def Signup(payload: User):
     print(payload.email)
     print(payload.is_active)
     print(payload.bio)
+    print('bmi',payload.bmi)
 
 
 data = {
     "username": "zulkaif_123",
     "password": "mypassword",
-    "age": 22,
+    "age": 62,
     "email": "zulkaif@gmail.com",
+    'contact' : {'phone':'0340' , 'emergency_contact' : '04534'} ,
     "bio": "I am MERN Stack Developer",
+    'height_cm': 182.88,  # 6 feet
+    'weight_kg': 72
 }
 
 user = User(**data)
